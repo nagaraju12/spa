@@ -1,0 +1,34 @@
+<%= form_for([:admin, @sub_sub_category], :url => admin_category_sub_category_sub_sub_categories_path(params[:category_id],params[:sub_category_id]), :html => {:class => "da-form"}) do |f| %>
+
+<% if @sub_sub_category.errors.any? %>
+  <div class="da-panel-content">
+    <div class="da-message warning">
+      <h2><%= pluralize(@sub_sub_category.errors.count, "error") %> prohibited this sub category from being saved:</h2>
+
+      <ul>
+        <% @sub_sub_category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+<div class="da-form-row">
+  <label></label>
+  <div class="da-form-item large">
+    <%#= f.select(:sub_category_id, SubCategory.all.map {|c| [c.name, c.id]}, :prompt =>"Choose a Category") %>
+  </div>
+</div>
+
+<div class="da-form-row">
+  <label><%= f.label :name %></label>
+  <div class="da-form-item large">
+    <%= f.text_field :name, class: "form-control", placeholder:"Name of sub Sub Category"%>
+    </div>
+  </div>
+
+<div class="da-button-row">
+    <%= f.submit class: "da-button blue left" %>
+</div>
+
+<% end %>

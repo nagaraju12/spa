@@ -1,0 +1,45 @@
+<%= link_to "Create Product", new_admin_product_path %>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing products</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Pimages</th>
+			<th>Pvideos</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @products.each do |product| %>
+		<tr>
+			<td><%= product.name %></td>
+			<td><%= product.description %></td> 
+			<td><%= product.price %></td>
+			<td><%= image_tag product.pimage_url, :style=>"max-width:300px;max-height:230px;", :controls => true %></td>
+			<td><%= video_tag product.pvideo_url ,:size => "320x240", :controls => true %></td>
+			<td><%= link_to "Download Spa",product.pdoc_url, :class => "btn btn-small btn-info", target: '_blank' %></td>
+			<td>
+			<%= link_to "show",admin_product_path(product.id) %>
+
+			<%= link_to "edit", edit_admin_product_path(product.id)  %>  
+
+			<%= link_to "delete", admin_product_path(product.id), method: :delete, data: { confirm: 'Are you sure?' }  %>
+			</td>
+		</tr>
+
+		<% end %>
+
+	</tbody>
+</table>
+
+<br>
+
+

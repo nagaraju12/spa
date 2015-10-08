@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spa</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<% if current_user.present? %>
+<%= link_to "log out",destroy_user_session_path,:method => :delete%>
+<%= link_to "products", admin_products_path %>
+<%= link_to "category", admin_categories_path %>
+<% else %>
+<%= link_to "log in",user_session_path %>
+<%= link_to "sign up",new_user_registration_path %>
+<% end %>
+
+
+</body>
+</html>
